@@ -95,7 +95,7 @@ class SpecialAuthenticator extends AbstractFormLoginAuthenticator implements Pas
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('dashboard'));
+        return new RedirectResponse($this->urlGenerator->generate('wish_home'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

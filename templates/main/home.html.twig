@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+	Home |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<h1>Home</h1>
+	{% for c in categs %}
+		<h3>{{ c.name }}</h3>
+		<ul>
+			{% for w in c.wishes %}
+				<li>{{ w.title }}</li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+	<br><br>
+{% endblock %}

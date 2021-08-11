@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}dashboard Wishes
+{% endblock %}
+
+{% block body %}
+	<div class="offset-3 col-6">
+		<h1>Dashboard</h1>
+		<p>Hello
+			{{ app.user.pseudo }}!
+		</p>
+		<p>
+			<a href="{{ path('wish_ajouter') }}" class="btn btn-success">
+				<i class="fas fa-plus"></i>
+			</a>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Titre</th>
+						<th>Categorie</th>
+						<th>Date</th>
+						<th>publication</th>
+
+						<th colspan="2">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for w in wishes %}
+						<tr>
+							<td>{{ w.title }}</td>
+							<td>{{ w.categ.name }}</td>
+							<td>
+								<a href="{{path('wish_author',{author:w.author})}}">
+									{{ w.author }}</a>
+							</td>
+							<td>{{ w.dateCreated|date('d/m/Y') }}</td>
+							<td>
+								{% if w.isPublished %}
+									en ligne
+								{% else %}
+									en attente
+								{% endif %}
+							</td>
+							<td>
+								<a href="{{ path('wish_modifier',{id:w.id}) }}" class="btn btn-outline-secondary">
+									<i class="fas fa-edit"></i>
+								</a>
+							</td>
+							<td>
+								<a href="{{ path('wish_enlever',{id:w.id}) }}" class="btn btn-outline-danger" onclick="return confirm('Enlever : {{ w.title }} ?');">
+									<i class="fas fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</p>
+	</table>
+</div>{% endblock %}

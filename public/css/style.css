@@ -1,0 +1,7 @@
+.logo-gris
+{
+    filter: invert(94%) sepia(100%) saturate(24%) hue-rotate(248deg) brightness(104%) contrast(100%);
+}
+*{
+    font-family: 'Hind', sans-serif;  
+}
